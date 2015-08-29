@@ -7,15 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * Created by Admin on 04-06-2015.
- */
-public class ContentFragment extends Fragment {
+
+public class FragmentWeather extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.content_fragment,container,false);
+
+        // Inflate the View
+        View v = inflater.inflate(R.layout.fragment_weather, container, false);
+
+        // Initiaizing Weather Client Builder
         return v;
     }
+
 }

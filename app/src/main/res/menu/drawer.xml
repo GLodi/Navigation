@@ -4,10 +4,10 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/inbox"
+            android:id="@+id/weather"
             android:checked="false"
-            android:icon="@drawable/ic_inbox_black_48dp"
-            android:title="@string/inbox_string" />
+            android:icon="@drawable/weather_pouring"
+            android:title="@string/weather_string" />
 
         <item
             android:id="@+id/starred"

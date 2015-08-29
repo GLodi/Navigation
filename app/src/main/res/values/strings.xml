@@ -6,7 +6,7 @@
     <string name="navigation_item_1">Home</string>
     <string name="navigation_item_2">Events</string>
     <string name="starred_string">Starred</string>
-    <string name="inbox_string">Inbox</string>
+    <string name="weather_string">Weather</string>
     <string name="sent_mail_string">Sent mail</string>
     <string name="draft_string">Drafts</string>
     <string name="subheader">Subheader</string>
