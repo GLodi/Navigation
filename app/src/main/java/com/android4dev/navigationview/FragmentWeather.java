@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.survivingwithandroid.weather.lib.WeatherClient;
 import com.survivingwithandroid.weather.lib.WeatherConfig;
@@ -27,9 +28,10 @@ public class FragmentWeather extends Fragment {
         // Inflate the View
         View v = inflater.inflate(R.layout.fragment_weather, container, false);
 
-        final TextView textView2 = (TextView) v.findViewById(R.id.forecast);
+        final TextView temp = (TextView) v.findViewById(R.id.currentTemp);
+        final TextView condition = (TextView) v.findViewById(R.id.currentCondition);
 
-        // Initiaizing Weather Client Builder
+        // Initializing Weather Client Builder
         try {
 
             WeatherClient client = (new WeatherClient.ClientBuilder()).attach(getActivity())
@@ -38,23 +40,25 @@ public class FragmentWeather extends Fragment {
                     .config(new WeatherConfig())
                     .build();
 
-            client.getCurrentCondition(new WeatherRequest("3169070"), new WeatherClient.WeatherEventListener(){
+            client.getCurrentCondition(new WeatherRequest("3173435"), new WeatherClient.WeatherEventListener(){
 
                 @Override
                 public void onWeatherRetrieved(CurrentWeather currentWeather) {
                     float currentTemp = currentWeather.weather.temperature.getTemp();
-                    textView2.setText("City ["+currentWeather.weather.location.getCity()+"] Current temp ["+currentTemp+"]");
+                    String conditionString = currentWeather.weather.currentCondition.getCondition();
+                    temp.setText("City ["+currentWeather.weather.location.getCity()+"] Current temp ["+currentTemp+"]");
+                    condition.setText(conditionString);
                 }
 
                 @Override
                 public void onWeatherError(WeatherLibException e) {
-                    textView2.setText("Weather Error - parsing data");
+                    temp.setText("Weather Error - parsing data");
                     e.printStackTrace();
                 }
 
                 @Override
                 public void onConnectionError(Throwable throwable) {
-                    textView2.setText("Connection error");
+                    temp.setText("Connection error");
                     throwable.printStackTrace();
                 }
             });

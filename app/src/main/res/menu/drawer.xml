@@ -10,16 +10,16 @@
             android:title="@string/weather_string" />
 
         <item
-            android:id="@+id/starred"
+            android:id="@+id/card"
             android:checked="false"
-            android:icon="@drawable/ic_star_black_48dp"
-            android:title="@string/starred_string" />
+            android:icon="@drawable/ic_picture_in_picture_black_48dp"
+            android:title="@string/card_string" />
 
         <item
-            android:id="@+id/sent_mail"
+            android:id="@+id/location"
             android:checked="false"
-            android:icon="@drawable/ic_send_black_48dp"
-            android:title="@string/sent_mail_string" />
+            android:icon="@drawable/ic_room_black_48dp"
+            android:title="@string/location_string" />
 
         <item
             android:id="@+id/drafts"
