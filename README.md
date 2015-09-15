@@ -4,5 +4,5 @@ Libraries implemented:
  - WeatherLib (https://github.com/survivingwithandroid/WeatherLib)
  - VolleyClient
  - OkHttpClient
- - smart-location-lib (https://github.com/mrmans0n/smart-location-lib)
+ - FloatingActionButton (https://github.com/makovkastar/FloatingActionButton)
 
