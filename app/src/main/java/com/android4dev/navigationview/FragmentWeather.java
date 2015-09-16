@@ -46,7 +46,7 @@ public class FragmentWeather extends Fragment {
                 public void onWeatherRetrieved(CurrentWeather currentWeather) {
                     float currentTemp = currentWeather.weather.temperature.getTemp();
                     String conditionString = currentWeather.weather.currentCondition.getCondition();
-                    temp.setText("City ["+currentWeather.weather.location.getCity()+"] Current temp ["+currentTemp+"]");
+                    temp.setText("City [" + currentWeather.weather.location.getCity() + "] Current temp [" + currentTemp + "]");
                     condition.setText(conditionString);
                 }
 
@@ -66,6 +66,7 @@ public class FragmentWeather extends Fragment {
         } catch (Throwable t){
             t.printStackTrace();
         }
+
         return v;
     }
 

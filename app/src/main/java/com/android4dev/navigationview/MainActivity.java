@@ -68,6 +68,10 @@ public class MainActivity extends AppCompatActivity {
                         toolbar.setTitle("Card");
                         return true;
                     case R.id.location:
+                        FragmentLocation fragmentLocation = new FragmentLocation();
+                        android.support.v4.app.FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction2.replace(R.id.frame, fragmentLocation);
+                        fragmentTransaction2.commit();
                         toolbar.setTitle("Location");
                         return true;
                     case R.id.drafts:
