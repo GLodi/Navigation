@@ -31,6 +31,10 @@ public class FragmentWeather extends Fragment {
         final TextView temp = (TextView) v.findViewById(R.id.currentTemp);
         final TextView condition = (TextView) v.findViewById(R.id.currentCondition);
 
+        MainActivity mainActivity = (MainActivity) getActivity();
+        Double latitude = Double.valueOf(mainActivity.LATITUDE);
+        Double longitude = Double.valueOf(mainActivity.LONGITUDE);
+
         // Initializing Weather Client Builder
         try {
 
@@ -40,7 +44,7 @@ public class FragmentWeather extends Fragment {
                     .config(new WeatherConfig())
                     .build();
 
-            client.getCurrentCondition(new WeatherRequest("3173435"), new WeatherClient.WeatherEventListener(){
+            client.getCurrentCondition(new WeatherRequest(longitude, latitude), new WeatherClient.WeatherEventListener(){
 
                 @Override
                 public void onWeatherRetrieved(CurrentWeather currentWeather) {

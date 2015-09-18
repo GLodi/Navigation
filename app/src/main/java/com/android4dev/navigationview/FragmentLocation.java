@@ -35,6 +35,8 @@ public class FragmentLocation extends Fragment{
                 double latitude = location.getLatitude();
                 longText.setText("Longitude: " + Double.toString(longitude));
                 latiText.setText("Latitude: " + Double.toString(latitude));
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.setCoordinates(latitude, longitude);
             }
 
             @Override

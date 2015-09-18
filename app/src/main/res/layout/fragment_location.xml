@@ -17,8 +17,17 @@
         android:text="Latitude"
         android:id="@+id/latidudeTextView"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="145dp"
-        android:layout_alignParentTop="true"
+        android:layout_marginBottom="60dp"
+        android:layout_above="@+id/longitudeTextView"
         android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TURN ON YOUR GPS"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/longitudeTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp" />
 
 </RelativeLayout>

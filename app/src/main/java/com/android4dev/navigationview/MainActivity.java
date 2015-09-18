@@ -21,6 +21,14 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
 
+    public String LATITUDE = "45.46";
+    public String LONGITUDE = "9.19";
+
+    public void setCoordinates(Double latitude, Double longitude){
+        LATITUDE = String.valueOf(latitude);
+        LONGITUDE = String.valueOf(longitude);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
