@@ -26,11 +26,13 @@ public class FragmentWeather extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the View
-        View v = inflater.inflate(R.layout.fragment_weather, container, false);
+        View v = inflater.inflate(R.layout.fragment_weather_card, container, false);
 
-        final TextView temp = (TextView) v.findViewById(R.id.currentTemp);
-        final TextView condition = (TextView) v.findViewById(R.id.currentCondition);
+        final TextView temp = (TextView) v.findViewById(R.id.temperatureText);
+        final TextView condition = (TextView) v.findViewById(R.id.conditionText);
+        final TextView city = (TextView) v.findViewById(R.id.cityNameText);
 
+        // Get coordinates from super class
         MainActivity mainActivity = (MainActivity) getActivity();
         Double latitude = Double.valueOf(mainActivity.LATITUDE);
         Double longitude = Double.valueOf(mainActivity.LONGITUDE);
@@ -50,19 +52,20 @@ public class FragmentWeather extends Fragment {
                 public void onWeatherRetrieved(CurrentWeather currentWeather) {
                     float currentTemp = currentWeather.weather.temperature.getTemp();
                     String conditionString = currentWeather.weather.currentCondition.getCondition();
-                    temp.setText("City [" + currentWeather.weather.location.getCity() + "] Current temp [" + currentTemp + "]");
+                    city.setText(currentWeather.weather.location.getCity());
+                    temp.setText(Float.toString(currentTemp) + "°C");
                     condition.setText(conditionString);
                 }
 
                 @Override
                 public void onWeatherError(WeatherLibException e) {
-                    temp.setText("Weather Error - parsing data");
+                    city.setText("Weather Error - parsing data");
                     e.printStackTrace();
                 }
 
                 @Override
                 public void onConnectionError(Throwable throwable) {
-                    temp.setText("Connection error");
+                    city.setText("Connection error");
                     throwable.printStackTrace();
                 }
             });

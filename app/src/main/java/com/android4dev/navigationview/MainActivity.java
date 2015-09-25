@@ -83,7 +83,11 @@ public class MainActivity extends AppCompatActivity {
                         toolbar.setTitle("Location");
                         return true;
                     case R.id.drafts:
-                        toolbar.setTitle("Drafts");
+                        FragmentWeatherCard fragmentWeatherCard = new FragmentWeatherCard();
+                        android.support.v4.app.FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction3.replace(R.id.frame, fragmentWeatherCard);
+                        fragmentTransaction3.commit();
+                        toolbar.setTitle("Weather Card");
                         return true;
                     case R.id.allmail:
                         toolbar.setTitle("All mails");
