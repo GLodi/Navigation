@@ -25,7 +25,7 @@
             </ImageView>
 
             <TextView
-                android:id="@+id/cityNameText"
+                android:id="@+id/cityNameTextF"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -58,7 +58,7 @@
             android:layout_marginRight="2dp">
 
             <TextView
-                android:id="@+id/temperatureText"
+                android:id="@+id/temperatureTextF"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -81,7 +81,7 @@
             android:layout_marginRight="4dp">
 
             <TextView
-                android:id="@+id/conditionText"
+                android:id="@+id/conditionTextF"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -98,4 +98,3 @@
     </LinearLayout>
 
 </LinearLayout>
-

@@ -22,10 +22,10 @@
             android:title="@string/location_string" />
 
         <item
-            android:id="@+id/drafts"
+            android:id="@+id/forecast"
             android:checked="false"
             android:icon="@drawable/ic_drafts_black_48dp"
-            android:title="@string/draft_string" />
+            android:title="@string/forecast_string" />
 
 
         <item

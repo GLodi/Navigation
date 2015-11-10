@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
 
-
                 //Checking if the item is in checked state or not, if not make it in checked state
                 if(menuItem.isChecked()) menuItem.setChecked(false);
                 else menuItem.setChecked(true);
@@ -67,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                         fragmentTransaction.commit();
                         toolbar.setTitle("Weather");
                         return true;
-
                     case R.id.card:
                         FragmentCard fragmentCard = new FragmentCard();
                         android.support.v4.app.FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
@@ -82,12 +80,12 @@ public class MainActivity extends AppCompatActivity {
                         fragmentTransaction2.commit();
                         toolbar.setTitle("Location");
                         return true;
-                    case R.id.drafts:
-                        FragmentWeatherCard fragmentWeatherCard = new FragmentWeatherCard();
+                    case R.id.forecast:
+                        FragmentWeatherForecast fragmentWeatherForecast = new FragmentWeatherForecast();
                         android.support.v4.app.FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction3.replace(R.id.frame, fragmentWeatherCard);
+                        fragmentTransaction3.replace(R.id.frame, fragmentWeatherForecast);
                         fragmentTransaction3.commit();
-                        toolbar.setTitle("Weather Card");
+                        toolbar.setTitle("Forecast");
                         return true;
                     case R.id.allmail:
                         toolbar.setTitle("All mails");

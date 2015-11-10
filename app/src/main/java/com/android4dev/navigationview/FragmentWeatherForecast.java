@@ -15,22 +15,27 @@ import com.survivingwithandroid.weather.lib.WeatherConfig;
 import com.survivingwithandroid.weather.lib.client.okhttp.WeatherDefaultClient;
 import com.survivingwithandroid.weather.lib.exception.WeatherLibException;
 import com.survivingwithandroid.weather.lib.model.CurrentWeather;
+import com.survivingwithandroid.weather.lib.model.DayForecast;
+import com.survivingwithandroid.weather.lib.model.Weather;
+import com.survivingwithandroid.weather.lib.model.WeatherForecast;
 import com.survivingwithandroid.weather.lib.provider.forecastio.ForecastIOProviderType;
 import com.survivingwithandroid.weather.lib.provider.openweathermap.OpenweathermapProviderType;
 import com.survivingwithandroid.weather.lib.request.WeatherRequest;
 
-public class FragmentWeather extends Fragment {
+import java.util.List;
+
+public class FragmentWeatherForecast extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the View
-        View v = inflater.inflate(R.layout.fragment_weather_card, container, false);
+        View v = inflater.inflate(R.layout.fragment_weather_forecast, container, false);
 
-        final TextView temp = (TextView) v.findViewById(R.id.temperatureText);
-        final TextView condition = (TextView) v.findViewById(R.id.conditionText);
-        final TextView city = (TextView) v.findViewById(R.id.cityNameText);
+        final TextView temp = (TextView) v.findViewById(R.id.temperatureTextF);
+        final TextView condition = (TextView) v.findViewById(R.id.conditionTextF);
+        final TextView city = (TextView) v.findViewById(R.id.cityNameTextF);
 
         // Get coordinates from super class
         MainActivity mainActivity = (MainActivity) getActivity();
@@ -46,29 +51,27 @@ public class FragmentWeather extends Fragment {
                     .config(new WeatherConfig())
                     .build();
 
-            client.getCurrentCondition(new WeatherRequest(longitude, latitude), new WeatherClient.WeatherEventListener(){
-
+            client.getForecastWeather(new WeatherRequest(longitude, latitude), new WeatherClient.ForecastWeatherEventListener() {
                 @Override
-                public void onWeatherRetrieved(CurrentWeather currentWeather) {
-                    float currentTemp = currentWeather.weather.temperature.getTemp();
-                    float currentPressure = currentWeather.weather.currentCondition.getPressure();
-                    int currentClouds = currentWeather.weather.clouds.getPerc();
-                    String conditionString = currentWeather.weather.currentCondition.getCondition();
-                    city.setText(currentWeather.weather.location.getCity());
-                    temp.setText(Float.toString(currentTemp) + "°C " + Integer.toString(currentClouds) + "%");
-                    condition.setText(conditionString);
+                public void onWeatherRetrieved(WeatherForecast forecast) {
+                    List dayForecastList = forecast.getForecast();
+                    DayForecast dForecast = new DayForecast();
+                    for (dForecast : dayForecastList){
+                        Weather weather = dForecast.weather;
+                        long timestamp = dForecast.timestamp;
+                    }
                 }
 
                 @Override
-                public void onWeatherError(WeatherLibException e) {
-                    city.setText("Weather Error - parsing data");
-                    e.printStackTrace();
+                public void onWeatherError(WeatherLibException wle) {
+                    city.setText("Weather error - parsing data");
+                    wle.printStackTrace();
                 }
 
                 @Override
-                public void onConnectionError(Throwable throwable) {
+                public void onConnectionError(Throwable t) {
                     city.setText("Connection error");
-                    throwable.printStackTrace();
+                    t.printStackTrace();
                 }
             });
 
