@@ -51,7 +51,7 @@ public class WeatherConfig {
     /*
     * The API key that must me sent to the weather provider. Not all the providers require this key. It may be null
     * */
-    public String ApiKey = "";
+    public String ApiKey = "c4b239128c7bed5c067cc6ea6447395a";
     public UNIT_SYSTEM unitSystem = UNIT_SYSTEM.M;
 
 

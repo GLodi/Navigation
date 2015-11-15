@@ -22,6 +22,7 @@ import com.survivingwithandroid.weather.lib.provider.forecastio.ForecastIOProvid
 import com.survivingwithandroid.weather.lib.provider.openweathermap.OpenweathermapProviderType;
 import com.survivingwithandroid.weather.lib.request.WeatherRequest;
 
+import java.security.Timestamp;
 import java.util.List;
 
 public class FragmentWeatherForecast extends Fragment {
@@ -35,9 +36,8 @@ public class FragmentWeatherForecast extends Fragment {
 
         final TextView temp = (TextView) v.findViewById(R.id.temperatureTextF);
         final TextView condition = (TextView) v.findViewById(R.id.conditionTextF);
-        final TextView city = (TextView) v.findViewById(R.id.cityNameTextF);
 
-        // Get coordinates from super class
+        // Get coordinates from MainActivity class
         MainActivity mainActivity = (MainActivity) getActivity();
         Double latitude = Double.valueOf(mainActivity.LATITUDE);
         Double longitude = Double.valueOf(mainActivity.LONGITUDE);
@@ -54,9 +54,8 @@ public class FragmentWeatherForecast extends Fragment {
             client.getForecastWeather(new WeatherRequest(longitude, latitude), new WeatherClient.ForecastWeatherEventListener() {
                 @Override
                 public void onWeatherRetrieved(WeatherForecast forecast) {
-                    List dayForecastList = forecast.getForecast();
-                    DayForecast dForecast = new DayForecast();
-                    for (dForecast : dayForecastList){
+                    List<DayForecast> dayForecastList = forecast.getForecast();
+                    for (DayForecast dForecast : dayForecastList){
                         Weather weather = dForecast.weather;
                         long timestamp = dForecast.timestamp;
                     }
@@ -64,13 +63,11 @@ public class FragmentWeatherForecast extends Fragment {
 
                 @Override
                 public void onWeatherError(WeatherLibException wle) {
-                    city.setText("Weather error - parsing data");
                     wle.printStackTrace();
                 }
 
                 @Override
                 public void onConnectionError(Throwable t) {
-                    city.setText("Connection error");
                     t.printStackTrace();
                 }
             });
@@ -78,8 +75,6 @@ public class FragmentWeatherForecast extends Fragment {
         } catch (Throwable t){
             t.printStackTrace();
         }
-
-
 
         return v;
     }

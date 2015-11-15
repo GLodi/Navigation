@@ -17,6 +17,7 @@ import com.survivingwithandroid.weather.lib.exception.WeatherLibException;
 import com.survivingwithandroid.weather.lib.model.CurrentWeather;
 import com.survivingwithandroid.weather.lib.provider.forecastio.ForecastIOProviderType;
 import com.survivingwithandroid.weather.lib.provider.openweathermap.OpenweathermapProviderType;
+import com.survivingwithandroid.weather.lib.provider.yahooweather.YahooProviderType;
 import com.survivingwithandroid.weather.lib.request.WeatherRequest;
 
 public class FragmentWeather extends Fragment {
@@ -51,11 +52,10 @@ public class FragmentWeather extends Fragment {
                 @Override
                 public void onWeatherRetrieved(CurrentWeather currentWeather) {
                     float currentTemp = currentWeather.weather.temperature.getTemp();
-                    float currentPressure = currentWeather.weather.currentCondition.getPressure();
-                    int currentClouds = currentWeather.weather.clouds.getPerc();
+                    float currentHumidity = currentWeather.weather.currentCondition.getHumidity();
                     String conditionString = currentWeather.weather.currentCondition.getCondition();
                     city.setText(currentWeather.weather.location.getCity());
-                    temp.setText(Float.toString(currentTemp) + "°C " + Integer.toString(currentClouds) + "%");
+                    temp.setText(Float.toString(currentTemp) + "°C " + Float.toString(currentHumidity) + "%");
                     condition.setText(conditionString);
                 }
 

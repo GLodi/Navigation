@@ -26,8 +26,12 @@ public class FragmentLocation extends Fragment{
 
         // Initialize LocationManager
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
+        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            Location location1 = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        }
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        }
         LocationListener locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
@@ -55,8 +59,12 @@ public class FragmentLocation extends Fragment{
             }
         };
 
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 10, locationListener);
-
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
+        }
+        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 10, locationListener);
+        }
         return v;
     }
 }
