@@ -1,5 +1,6 @@
 package com.giuliolodi.navigation;
 
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -58,33 +59,57 @@ public class MainActivity extends AppCompatActivity {
 
                     // Replacing the main content with FragmentWeather which is our Inbox View;
                     case R.id.weather:
-                        FragmentWeather fragmentWeather = new FragmentWeather();
-                        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction.replace(R.id.frame, fragmentWeather);
-                        fragmentTransaction.commit();
-                        toolbar.setTitle("Weather");
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                FragmentWeather fragmentWeather = new FragmentWeather();
+                                android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                                fragmentTransaction.replace(R.id.frame, fragmentWeather);
+                                fragmentTransaction.commit();
+                                toolbar.setTitle("Weather");
+                            }
+                        }, 200);
                         return true;
+
                     case R.id.card:
-                        FragmentCard fragmentCard = new FragmentCard();
-                        android.support.v4.app.FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction1.replace(R.id.frame, fragmentCard);
-                        fragmentTransaction1.commit();
-                        toolbar.setTitle("Card");
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                FragmentCard fragmentCard = new FragmentCard();
+                                android.support.v4.app.FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+                                fragmentTransaction1.replace(R.id.frame, fragmentCard);
+                                fragmentTransaction1.commit();
+                                toolbar.setTitle("Card");
+                            }
+                        }, 200);
                         return true;
+
                     case R.id.location:
-                        FragmentLocation fragmentLocation = new FragmentLocation();
-                        android.support.v4.app.FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction2.replace(R.id.frame, fragmentLocation);
-                        fragmentTransaction2.commit();
-                        toolbar.setTitle("Location");
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                FragmentLocation fragmentLocation = new FragmentLocation();
+                                android.support.v4.app.FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+                                fragmentTransaction2.replace(R.id.frame, fragmentLocation);
+                                fragmentTransaction2.commit();
+                                toolbar.setTitle("Location");
+                            }
+                        }, 200);
                         return true;
+
                     case R.id.forecast:
-                        FragmentWeatherForecast fragmentWeatherForecast = new FragmentWeatherForecast();
-                        android.support.v4.app.FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction3.replace(R.id.frame, fragmentWeatherForecast);
-                        fragmentTransaction3.commit();
-                        toolbar.setTitle("Forecast");
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                FragmentWeatherForecast fragmentWeatherForecast = new FragmentWeatherForecast();
+                                android.support.v4.app.FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
+                                fragmentTransaction3.replace(R.id.frame, fragmentWeatherForecast);
+                                fragmentTransaction3.commit();
+                                toolbar.setTitle("Forecast");
+                            }
+                        }, 200);
                         return true;
+
                     case R.id.allmail:
                         toolbar.setTitle("All mails");
                         return true;
