@@ -24,7 +24,7 @@
         <item
             android:id="@+id/forecast"
             android:checked="false"
-            android:icon="@drawable/ic_drafts_black_48dp"
+            android:icon="@drawable/weather_pouring"
             android:title="@string/forecast_string" />
 
 

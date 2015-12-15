@@ -25,7 +25,8 @@ public class FragmentCard extends Fragment {
         buttonCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Snackbar da button_card", Snackbar.LENGTH_LONG);
+                Snackbar snackbar = Snackbar.make(view, "Snackbar di prova", Snackbar.LENGTH_LONG);
+                snackbar.show();
             }
         });
 

@@ -16,13 +16,13 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Defining Variables
+    // Defining Variables
     private Toolbar toolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
 
-    public String LATITUDE = "45.46";
-    public String LONGITUDE = "9.19";
+    public String LATITUDE = "45.464283";
+    public String LONGITUDE = "9.190263";
 
     public void setCoordinates(Double latitude, Double longitude){
         LATITUDE = String.valueOf(latitude);
@@ -48,17 +48,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
 
-                //Checking if the item is in checked state or not, if not make it in checked state
+                // Checking if the item is in checked state or not, if not make it in checked state
                 if(menuItem.isChecked()) menuItem.setChecked(false);
                 else menuItem.setChecked(true);
 
-                //Closing drawer on item click
+                // Closing drawer on item click
                 drawerLayout.closeDrawers();
 
-                //Check to see which item was being clicked and perform appropriate action
+                // Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()){
 
-                    //Replacing the main content with FragmentWeather Which is our Inbox View;
+                    // Replacing the main content with FragmentWeather which is our Inbox View;
                     case R.id.weather:
                         FragmentWeather fragmentWeather = new FragmentWeather();
                         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -121,10 +121,10 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        //Setting the actionbarToggle to drawer layout
+        // Setting the actionbarToggle to drawer layout
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
 
-        //calling sync state is necessary or else your hamburger icon wont show up
+        // Calling sync state is necessary or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
     }
 
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
