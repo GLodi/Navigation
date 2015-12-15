@@ -4,5 +4,4 @@ Libraries implemented:
  - WeatherLib (https://github.com/survivingwithandroid/WeatherLib)
  - VolleyClient
  - OkHttpClient
- - FloatingActionButton (https://github.com/makovkastar/FloatingActionButton)
 
