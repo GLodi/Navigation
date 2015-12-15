@@ -1,4 +1,4 @@
-package com.android4dev.navigationview;
+package com.giuliolodi.navigation;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
