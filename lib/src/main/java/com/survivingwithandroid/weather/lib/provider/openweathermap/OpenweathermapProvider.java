@@ -125,14 +125,14 @@ public class OpenweathermapProvider implements IWeatherProvider {
             weather.currentCondition.setPressure(getFloat("pressure", mainObj)); //#18
             weather.currentCondition.setPressureGroundLevel((float) mainObj.optDouble("grnd_level"));
             weather.currentCondition.setPressureSeaLevel((float) mainObj.optDouble("sea_level"));
-            weather.temperature.setMaxTemp(getFloat("temp_max", mainObj));
-            weather.temperature.setMinTemp(getFloat("temp_min", mainObj));
+            //weather.temperature.setMaxTemp(getFloat("temp_max", mainObj));
+            //weather.temperature.setMinTemp(getFloat("temp_min", mainObj));
             weather.temperature.setTemp(getFloat("temp", mainObj));
 
             // Wind
             JSONObject wObj = getObject("wind", jObj);
-            weather.wind.setSpeed(getFloat("speed", wObj));
-            weather.wind.setDeg(getFloat("deg", wObj));
+            //weather.wind.setSpeed(getFloat("speed", wObj));
+            //weather.wind.setDeg(getFloat("deg", wObj));
             /*
             try {
                 weather.wind.setGust(getFloat("gust", wObj));

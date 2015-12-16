@@ -84,7 +84,7 @@ public class FragmentWeatherForecast extends Fragment {
                     for (int k = 0; k < 7; k++) {
                         Date date = c.getTime();
                         String formattedDate = df.format(date);
-                        arrayList.add("Day: " + formattedDate + " - " + String.valueOf(dayForecastList.get(k).forecastTemp.day) + "°C");
+                        arrayList.add("Day: " + formattedDate + " - Temp: " + String.valueOf(dayForecastList.get(k).forecastTemp.day) + "°C");
                         c.add(Calendar.DATE, 1);
                     }
 

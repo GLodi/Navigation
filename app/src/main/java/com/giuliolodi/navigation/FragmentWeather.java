@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.survivingwithandroid.weather.lib.WeatherClient;
@@ -28,6 +29,7 @@ public class FragmentWeather extends Fragment {
         final TextView temp = (TextView) v.findViewById(R.id.temperatureText);
         final TextView condition = (TextView) v.findViewById(R.id.conditionText);
         final TextView city = (TextView) v.findViewById(R.id.cityNameText);
+        final ImageView image = (ImageView) v.findViewById(R.id.conditionImage);
 
         // Get coordinates from super class
         MainActivity mainActivity = (MainActivity) getActivity();
@@ -53,6 +55,23 @@ public class FragmentWeather extends Fragment {
                     city.setText(currentWeather.weather.location.getCity());
                     temp.setText(Float.toString(currentTemp) + "°C " + Float.toString(currentHumidity) + "%");
                     condition.setText(conditionString);
+
+                    if (conditionString.equals("Rain")) {
+                        image.setImageResource(R.drawable.weather_pouring);
+                    }
+                    else if (conditionString.equals("Clouds")) {
+                        image.setImageResource(R.drawable.ic_cloud_black_48dp);
+                    }
+                    else if (conditionString.equals("Clear") || conditionString.equals("Sunny")) {
+                        image.setImageResource(R.drawable.ic_wb_sunny_black_48dp);
+                    }
+                    else if (conditionString.equals("Snow")) {
+                        image.setImageResource(R.drawable.weather_snowy);
+                    }
+                    else if (conditionString.equals("Mist")) {
+                        image.setImageResource(R.drawable.weather_fog);
+                    }
+
                 }
 
                 @Override
