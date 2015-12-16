@@ -19,9 +19,13 @@ import com.survivingwithandroid.weather.lib.model.DayForecast;
 import com.survivingwithandroid.weather.lib.model.Weather;
 import com.survivingwithandroid.weather.lib.model.WeatherForecast;
 import com.survivingwithandroid.weather.lib.provider.openweathermap.OpenweathermapProviderType;
+import com.survivingwithandroid.weather.lib.provider.yahooweather.YahooProviderType;
 import com.survivingwithandroid.weather.lib.request.WeatherRequest;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FragmentWeatherForecast extends Fragment {
@@ -46,7 +50,7 @@ public class FragmentWeatherForecast extends Fragment {
 
         final TextView temp = (TextView) v.findViewById(R.id.temperatureTextF);
         final TextView condition = (TextView) v.findViewById(R.id.conditionTextF);
-        final ListView list = (ListView) v.findViewById(R.id.list_item);
+        final ListView list = (ListView) v.findViewById(R.id.listItem);
 
         // Get coordinates from MainActivity class
         MainActivity mainActivity = (MainActivity) getActivity();
@@ -75,13 +79,12 @@ public class FragmentWeatherForecast extends Fragment {
                     }
 
                     List<String> arrayList = new ArrayList<String>();
-                    for (int k = 0; k < 2; k++) {
-                        arrayList.add(String.valueOf(dayForecastList.get(k)));
+                    for (int k = 0; k < 7; k++) {
+                        arrayList.add("Day: " + dayForecastList.get(k).timestamp + " - " + String.valueOf(dayForecastList.get(k).forecastTemp.day) + "°C");
                     }
 
-                    ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context, R.layout.list_item, arrayList);
+                    ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context, R.layout.list_item, R.id.listText, arrayList);
                     list.setAdapter(myAdapter);
-                    condition.setText(String.valueOf(dayForecastList.get(0)));
                 }
 
                 @Override
