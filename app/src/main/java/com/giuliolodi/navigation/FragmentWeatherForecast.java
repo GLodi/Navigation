@@ -19,13 +19,13 @@ import com.survivingwithandroid.weather.lib.model.DayForecast;
 import com.survivingwithandroid.weather.lib.model.Weather;
 import com.survivingwithandroid.weather.lib.model.WeatherForecast;
 import com.survivingwithandroid.weather.lib.provider.openweathermap.OpenweathermapProviderType;
-import com.survivingwithandroid.weather.lib.provider.yahooweather.YahooProviderType;
 import com.survivingwithandroid.weather.lib.request.WeatherRequest;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class FragmentWeatherForecast extends Fragment {
@@ -79,8 +79,13 @@ public class FragmentWeatherForecast extends Fragment {
                     }
 
                     List<String> arrayList = new ArrayList<String>();
+                    Calendar c = Calendar.getInstance();
+                    SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyy");
                     for (int k = 0; k < 7; k++) {
-                        arrayList.add("Day: " + dayForecastList.get(k).timestamp + " - " + String.valueOf(dayForecastList.get(k).forecastTemp.day) + "°C");
+                        Date date = c.getTime();
+                        String formattedDate = df.format(date);
+                        arrayList.add("Day: " + formattedDate + " - " + String.valueOf(dayForecastList.get(k).forecastTemp.day) + "°C");
+                        c.add(Calendar.DATE, 1);
                     }
 
                     ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context, R.layout.list_item, R.id.listText, arrayList);
