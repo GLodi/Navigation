@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                                 fragmentTransaction.commit();
                                 toolbar.setTitle("Weather");
                             }
-                        }, 200);
+                        }, 250);
                         return true;
 
                     case R.id.card:
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                                 fragmentTransaction1.commit();
                                 toolbar.setTitle("Card");
                             }
-                        }, 200);
+                        }, 250);
                         return true;
 
                     case R.id.location:
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                                 fragmentTransaction2.commit();
                                 toolbar.setTitle("Location");
                             }
-                        }, 200);
+                        }, 250);
                         return true;
 
                     case R.id.forecast:
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                                 fragmentTransaction3.commit();
                                 toolbar.setTitle("Forecast");
                             }
-                        }, 200);
+                        }, 250);
                         return true;
 
                     case R.id.allmail:

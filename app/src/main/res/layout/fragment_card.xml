@@ -9,8 +9,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="2dp"
-        card_view:cardElevation="8dp"
-        android:background="@drawable/giulio">
+        card_view:cardElevation="8dp">
 
         <RelativeLayout
             android:id="@+id/relative_card"
@@ -20,7 +19,7 @@
             <ImageView
                 android:layout_width="115dp"
                 android:layout_height="115dp"
-                android:background="@drawable/giulio"
+                android:background="@drawable/giulio2"
                 android:id="@+id/fotomia"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
