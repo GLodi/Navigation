@@ -68,7 +68,7 @@ public class FragmentWeather extends Fragment {
                     else if (conditionString.equals("Snow")) {
                         image.setImageResource(R.drawable.weather_snowy);
                     }
-                    else if (conditionString.equals("Mist")) {
+                    else if (conditionString.equals("Mist") || conditionString.equals("Fog")) {
                         image.setImageResource(R.drawable.weather_fog);
                     }
 

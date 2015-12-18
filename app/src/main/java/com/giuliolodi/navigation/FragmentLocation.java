@@ -26,12 +26,7 @@ public class FragmentLocation extends Fragment{
 
         // Initialize LocationManager
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-            Location location1 = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-        }
-        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        }
+
         LocationListener locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
@@ -40,7 +35,12 @@ public class FragmentLocation extends Fragment{
                 longText.setText("Longitude: " + Double.toString(longitude));
                 latiText.setText("Latitude: " + Double.toString(latitude));
                 MainActivity mainActivity = (MainActivity) getActivity();
-                mainActivity.setCoordinates(latitude, longitude);
+
+                // The reference to Main Activity becomes null when the user is not in FragmentLocation,
+                // so in order to avoid a nullPointerException I need to check if the reference exists
+                if (mainActivity != null) {
+                    mainActivity.setCoordinates(latitude, longitude);
+                }
             }
 
             @Override
@@ -59,11 +59,11 @@ public class FragmentLocation extends Fragment{
             }
         };
 
-        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, locationListener);
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2 * 60 * 1000, 100, locationListener);
         }
-        if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)){
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 10, locationListener);
+        else if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2 * 60 * 1000, 100, locationListener);
         }
         return v;
     }
