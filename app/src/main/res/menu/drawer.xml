@@ -29,10 +29,10 @@
 
 
         <item
-            android:id="@+id/allmail"
+            android:id="@+id/request"
             android:checked="false"
-            android:icon="@drawable/ic_email_black_48dp"
-            android:title="@string/all_mail_string" />
+            android:icon="@drawable/ic_room_black_48dp"
+            android:title="@string/request_string" />
         <item
             android:id="@+id/trash"
             android:checked="false"

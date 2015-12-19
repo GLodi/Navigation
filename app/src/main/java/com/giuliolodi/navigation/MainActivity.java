@@ -110,8 +110,17 @@ public class MainActivity extends AppCompatActivity {
                         }, 250);
                         return true;
 
-                    case R.id.allmail:
-                        toolbar.setTitle("All mails");
+                    case R.id.request:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                FragmentRequest fragmentRequest = new FragmentRequest();
+                                android.support.v4.app.FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
+                                fragmentTransaction4.replace(R.id.frame, fragmentRequest);
+                                fragmentTransaction4.commit();
+                                toolbar.setTitle("Request");
+                            }
+                        }, 250);
                         return true;
                     case R.id.trash:
                         toolbar.setTitle("Trash");
