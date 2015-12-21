@@ -28,7 +28,7 @@ import java.util.List;
 public class FragmentRequest extends Fragment {
 
     public String requestString;
-    public String cityRequested;
+    public String cityIdRequested;
     public TextView requestCity;
     public EditText editText;
 
@@ -39,8 +39,6 @@ public class FragmentRequest extends Fragment {
 
         // Inflate the view
         final View v = inflater.inflate(R.layout.fragment_request, container, false);
-
-        final Context context = getActivity().getBaseContext();
 
         // Reference the view
         requestCity = (TextView) v.findViewById(R.id.request_city);
@@ -71,7 +69,7 @@ public class FragmentRequest extends Fragment {
 
         try {
 
-            final WeatherClient client = (new WeatherClient.ClientBuilder()).attach(getActivity())
+            WeatherClient client = (new WeatherClient.ClientBuilder()).attach(getActivity())
                     .httpClient(WeatherDefaultClient.class)
                     .provider(new OpenweathermapProviderType())
                     .config(new WeatherConfig())
@@ -80,7 +78,7 @@ public class FragmentRequest extends Fragment {
             client.searchCity(requestString, new WeatherClient.CityEventListener() {
                 @Override
                 public void onCityListRetrieved(List<City> cityList) {
-                    cityRequested = String.valueOf(cityList.get(0).getId());
+                    cityIdRequested = cityList.get(0).getId();
                 }
 
                 @Override
@@ -98,7 +96,6 @@ public class FragmentRequest extends Fragment {
         catch(Throwable t) {
             t.printStackTrace();
         }
-
     }
 
     public void getWeather(View v) {
@@ -109,13 +106,13 @@ public class FragmentRequest extends Fragment {
         // Initializing Weather Client Builder
         try {
 
-            final WeatherClient client = (new WeatherClient.ClientBuilder()).attach(getActivity())
+            WeatherClient client = (new WeatherClient.ClientBuilder()).attach(getActivity())
                     .httpClient(WeatherDefaultClient.class)
                     .provider(new OpenweathermapProviderType())
                     .config(new WeatherConfig())
                     .build();
 
-            client.getCurrentCondition(new WeatherRequest(cityRequested), new WeatherClient.WeatherEventListener() {
+            client.getCurrentCondition(new WeatherRequest(cityIdRequested), new WeatherClient.WeatherEventListener() {
                 @Override
                 public void onWeatherRetrieved(CurrentWeather weather) {
                     float currentTemp = weather.weather.temperature.getTemp();
