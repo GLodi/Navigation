@@ -56,8 +56,13 @@ public class FragmentRequest extends Fragment {
 
                 if ((keyEvent.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)){
                     requestString = editText.getText().toString();
-                    geoCoder();
-                    getWeather(v);
+                    if (requestString.isEmpty()) {
+                        requestCity.setText("Please insert city name");
+                    }
+                    else {
+                        geoCoder();
+                        getWeather(v);
+                    }
                     return true;
                 }
                 return false;
