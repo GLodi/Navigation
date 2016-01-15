@@ -8,10 +8,21 @@
         android:id="@+id/request_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="City">
+        android:text="City"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="137dp">
 
     </TextView>
+
+    <ListView
+        android:id="@+id/listViewWeek"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/request_city"
+        android:layout_above="@+id/inputLayout">
+
+    </ListView>
 
 
     <android.support.design.widget.TextInputLayout

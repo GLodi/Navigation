@@ -11,6 +11,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -27,6 +28,11 @@ import com.survivingwithandroid.weather.lib.provider.openweathermap.Openweatherm
 import com.survivingwithandroid.weather.lib.request.WeatherRequest;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 
 public class FragmentRequest extends Fragment {
@@ -44,6 +50,7 @@ public class FragmentRequest extends Fragment {
 
         // Inflate the view
         final View v = inflater.inflate(R.layout.fragment_request, container, false);
+        final Context context = getActivity().getBaseContext();
 
         // Reference the view
         requestCity = (TextView) v.findViewById(R.id.request_city);
@@ -62,6 +69,7 @@ public class FragmentRequest extends Fragment {
                     else {
                         geoCoder();
                         getWeather(v);
+                        getWeatherWeek(v, context);
                     }
                     return true;
                 }
@@ -124,6 +132,55 @@ public class FragmentRequest extends Fragment {
             });
         }
         catch (Throwable t) {
+            t.printStackTrace();
+        }
+
+    }
+
+    public void getWeatherWeek(View v, Context c) {
+
+        final Context context = c;
+
+        try {
+
+            final WeatherClient client = (new WeatherClient.ClientBuilder().attach(getActivity()))
+                    .httpClient(WeatherDefaultClient.class)
+                    .provider(new OpenweathermapProviderType())
+                    .config(new WeatherConfig())
+                    .build();
+
+            client.getForecastWeather(new WeatherRequest(LONGITUDE, LATITUDE), new WeatherClient.ForecastWeatherEventListener() {
+                @Override
+                public void onWeatherRetrieved(WeatherForecast forecast) {
+                    List<DayForecast> dayForecastList = forecast.getForecast();
+                    for (DayForecast dForecast : dayForecastList) {
+                        Weather weather = dForecast.weather;
+                        long timestamp = dForecast.timestamp;
+                    }
+                    List<String> arrayList = new ArrayList<String>();
+                    Calendar c = Calendar.getInstance();
+                    SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyy");
+                    for (int k = 0; k < 7; k++) {
+                        Date date = c.getTime();
+                        String formattedDate = df.format(date);
+                        arrayList.add("Day: " + formattedDate + " - Temp: " + String.valueOf(dayForecastList.get(k).forecastTemp.day) + "°C");
+                        c.add(Calendar.DATE, 1);
+                    }
+                    ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context, R.layout.list_item, R.id.listViewWeek, arrayList);
+                }
+
+                @Override
+                public void onWeatherError(WeatherLibException wle) {
+                    wle.printStackTrace();
+                }
+
+                @Override
+                public void onConnectionError(Throwable t) {
+                    t.printStackTrace();
+                }
+            });
+
+        } catch (Throwable t) {
             t.printStackTrace();
         }
 
