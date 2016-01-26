@@ -10,7 +10,7 @@
     <string name="location_string">Location</string>
     <string name="forecast_string">Forecast</string>
     <string name="subheader">Subheader</string>
-    <string name="trash_string">Trash</string>
+    <string name="notification_string">Notification</string>
     <string name="request_string">Request</string>
     <string name="spam_string">Spams</string>
     <string name="closeDrawer">Navigation View</string>

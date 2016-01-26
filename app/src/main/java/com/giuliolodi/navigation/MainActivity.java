@@ -122,8 +122,17 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }, 250);
                         return true;
-                    case R.id.trash:
-                        toolbar.setTitle("Trash");
+                    case R.id.notification:
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                FragmentNotification fragmentNotification = new FragmentNotification();
+                                android.support.v4.app.FragmentTransaction fragmentTransaction5 = getSupportFragmentManager().beginTransaction();
+                                fragmentTransaction5.replace(R.id.frame, fragmentNotification);
+                                fragmentTransaction5.commit();
+                                toolbar.setTitle("Notification");
+                            }
+                        }, 250);
                         return true;
                     case R.id.spam:
                         toolbar.setTitle("Spams");

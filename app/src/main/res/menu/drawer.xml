@@ -34,10 +34,10 @@
             android:icon="@drawable/ic_room_black_48dp"
             android:title="@string/request_string" />
         <item
-            android:id="@+id/trash"
+            android:id="@+id/notification"
             android:checked="false"
             android:icon="@drawable/ic_delete_black_48dp"
-            android:title="@string/trash_string" />
+            android:title="@string/notification_string" />
         <item
             android:id="@+id/spam"
             android:checked="false"
