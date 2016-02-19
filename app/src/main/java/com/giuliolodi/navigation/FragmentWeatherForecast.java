@@ -38,8 +38,6 @@ public class FragmentWeatherForecast extends Fragment {
 
         final Context context = getActivity().getBaseContext();
 
-        final TextView temp = (TextView) v.findViewById(R.id.temperatureTextF);
-        final TextView condition = (TextView) v.findViewById(R.id.conditionTextF);
         final ListView list = (ListView) v.findViewById(R.id.listItem);
 
         // Get coordinates from MainActivity class
@@ -78,19 +76,17 @@ public class FragmentWeatherForecast extends Fragment {
                         c.add(Calendar.DATE, 1);
                     }
 
-                    ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context, R.layout.list_item, R.id.listText, arrayList);
+                    ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context, R.layout.list_item, R.id.listViewWeek, arrayList);
                     list.setAdapter(myAdapter);
                 }
 
                 @Override
                 public void onWeatherError(WeatherLibException wle) {
-                    condition.setText("Weather error - parsing data");
                     wle.printStackTrace();
                 }
 
                 @Override
                 public void onConnectionError(Throwable t) {
-                    condition.setText("Communication error");
                     t.printStackTrace();
                 }
             });

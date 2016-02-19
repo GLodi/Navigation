@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.survivingwithandroid.weather.lib.WeatherClient;
@@ -40,6 +41,7 @@ public class FragmentRequest extends Fragment {
     public String requestString;
     public TextView requestCity;
     public EditText editText;
+    public ListView listView;
     public Double LATITUDE;
     public Double LONGITUDE;
 
@@ -139,6 +141,8 @@ public class FragmentRequest extends Fragment {
 
     public void getWeatherWeek(View v, Context c) {
 
+        listView = (ListView) v.findViewById(R.id.listViewWeek);
+
         final Context context = c;
 
         try {
@@ -167,6 +171,7 @@ public class FragmentRequest extends Fragment {
                         c.add(Calendar.DATE, 1);
                     }
                     ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context, R.layout.list_item, R.id.listViewWeek, arrayList);
+                    listView.setAdapter(myAdapter);
                 }
 
                 @Override

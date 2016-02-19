@@ -20,7 +20,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/request_city"
-        android:layout_above="@+id/inputLayout">
+        android:layout_above="@+id/inputLayout"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:scrollbars="vertical">
 
     </ListView>
 
