@@ -170,7 +170,7 @@ public class FragmentRequest extends Fragment {
                         arrayList.add("Day: " + formattedDate + " - Temp: " + String.valueOf(dayForecastList.get(k).forecastTemp.day) + "°C");
                         c.add(Calendar.DATE, 1);
                     }
-                    ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context, R.layout.list_item, R.id.listViewWeek, arrayList);
+                    ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context, R.layout.list_item, R.id.listText, arrayList);
                     listView.setAdapter(myAdapter);
                 }
 

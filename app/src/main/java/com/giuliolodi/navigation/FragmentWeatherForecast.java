@@ -76,7 +76,7 @@ public class FragmentWeatherForecast extends Fragment {
                         c.add(Calendar.DATE, 1);
                     }
 
-                    ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context, R.layout.list_item, R.id.listViewWeek, arrayList);
+                    ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(context, R.layout.list_item, R.id.listText, arrayList);
                     list.setAdapter(myAdapter);
                 }
 
